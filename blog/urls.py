@@ -8,7 +8,8 @@ urlpatterns = [
 	path('', PostList.as_view(), name='index'),
 	path('about/', blog_views.about, name='about'),
 	path('search/', Search.as_view(), name='search'),
-	path('category/<int:category>', CategoryList.as_view(), name='category'),
+	path('category/', CategoryList.as_view(), name='all-category'),
+	path('category/<int:category>', PostCategoryList.as_view(), name='category'),
 	path('article/<int:pk>/', PostView.as_view(), name='article'),
 	path('article/<int:article_id>/comment/', blog_views.post_comment, name='comment'),
 ]

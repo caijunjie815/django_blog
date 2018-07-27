@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_list_or_404, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_POST
 from django.views.generic import DetailView, ListView
 from django.contrib import messages
@@ -18,6 +18,15 @@ class PostList(ListView):
 
 
 class CategoryList(ListView):
+	"""
+	List all categories.
+	"""
+	model = Category
+	template_name = 'blog/category_list.html'
+	paginate_by = 10
+
+
+class PostCategoryList(ListView):
 	"""
 	list all posts in a given category ordered by posted time.
 	"""
@@ -118,11 +127,6 @@ class PostView(DetailView):
 		context['comment_form'] = comment_form
 
 		return context
-
-
-class NavList(ListView):  # list category names in navigation bar
-	model = Category
-	template_name = 'blog/nav.html'
 
 
 def about(request):

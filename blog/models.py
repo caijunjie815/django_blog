@@ -5,7 +5,11 @@ from django.shortcuts import reverse
 
 # Create your models here.
 class Category(models.Model):
-	name = models.CharField(max_length=100, unique=True, help_text='Enter a post category (e.g. python)')
+	id = models.IntegerField(primary_key=True, help_text='Enter a category id (e.g. 1)')
+	name = models.CharField(max_length=100, unique=True, help_text='Enter a category (e.g. python)')
+
+	class Meta:
+		ordering = ['name']
 
 	def get_absolute_url(self):
 		"""Returns the url to access a particular instance of the model."""
@@ -50,7 +54,7 @@ class Comments(models.Model):
 	content = models.TextField()
 	posted_time = models.DateTimeField(auto_now=True)
 	article = models.ForeignKey(Post, on_delete=models.CASCADE)
-	reply = models.ForeignKey('self', on_delete=models.DO_NOTHING, null=True, blank=True)
+	reply = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
 
 	def __str__(self):
 		return self.content
