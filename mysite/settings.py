@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cuh@^k0@ra2&kwrg0d5go1)3cri_vx
 # DEBUG = True
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = ['thawing-garden-42550.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['thawing-garden-42550.herokuapp.com', '127.0.0.1', 'www.caijunjie.me', 'caijunjie.me']
 
 # Application definition
 
@@ -123,5 +123,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
+
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
