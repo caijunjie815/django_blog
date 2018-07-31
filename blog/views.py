@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.db.models import Q
 from blog.models import Category, Comments, Post, Tag
 from .forms import CommentForm
+import markdown
 
 
 # Create your views here.
@@ -76,6 +77,16 @@ class PostView(DetailView):
 		self.top_level = []  # save top comments in a list
 		self.sub_level = {}
 		super().__init__()
+
+	def get_object(self, queryset=None):
+		queryset = Post.objects.get(id=self.kwargs['pk'])
+		# markdown the content of the post
+		queryset.content = markdown.markdown(queryset.content, extensions=[
+			'markdown.extensions.extra',
+			'markdown.extensions.codehilite',
+			'markdown.extensions.toc',
+		])
+		return queryset
 
 	# define comment function
 	def comment_sort(self, comments):
