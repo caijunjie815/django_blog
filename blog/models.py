@@ -56,6 +56,9 @@ class Comments(models.Model):
 	article = models.ForeignKey(Post, on_delete=models.CASCADE)
 	reply = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
 
+	class Meta:
+		ordering = ['posted_time']
+
 	def __str__(self):
 		return self.content
 
