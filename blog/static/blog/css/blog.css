@@ -10,9 +10,44 @@ body {
     padding-bottom: 3rem;
 }
 
+a {
+    color: cadetblue;
+}
+
+a:hover {
+    color: #3a6869;
+    text-decoration: none;
+}
+
 pre {
     background-color: #f6f8fa;
+}
 
+.btn-outline-success {
+    color: ghostwhite;
+    background-color: transparent;
+    border-color: forestgreen;
+}
+
+.btn-outline-primary {
+    color: cadetblue;
+    border-color: cadetblue;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: cadetblue;
+    border-color: cadetblue;
+}
+
+.blog-post {
+    box-shadow: -5px 0px 0px 0px #e7edf3;
+    padding-left: 5px;
+}
+
+.blog-post:hover {
+    background-color: #f6f8fa;
+    text-shadow: 17px 11px 2px 4px black;
 }
 
 .navbar {
