@@ -101,6 +101,11 @@ class PostView(DetailView):
 		[self.sub_level.setdefault(comment.reply.id, []).append(comment) for comment in comments if
 		 comment.reply is not None]
 		[self.format_show(top_comment) for top_comment in self.top_level]  # call a recursive function
+		for single_comment in self.comment_list:
+			single_comment.content = markdown.markdown(single_comment.content, extensions=[
+				'markdown.extensions.extra',
+				'markdown.extensions.codehilite',
+			])
 		return self.comment_list  # return sorted list of comments.
 
 	def format_show(self, comment):
