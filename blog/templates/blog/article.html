@@ -6,7 +6,7 @@
         <h3 class="blog-post-title"><a>{{ object.title|title }}</a></h3>
         <p class="blog-post-meta">{{ object.posted_time }} by <a href="#">{{ object.author }}</a></p>
         <hr>
-        <p>{{ object.content|safe }}</p>
+        <p class="markdown-content">{{ object.content|safe }}</p>
     </div>
     <hr>
     <div class="blog-category">
