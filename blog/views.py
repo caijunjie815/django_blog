@@ -14,8 +14,21 @@ class PostList(ListView):
 	list view for index.html
 	"""
 	template_name = 'blog/index.html'
-	queryset = Post.objects.all()
+	# queryset = Post.objects.all()
 	paginate_by = 5  # set numbers of posts per page.
+
+	def get_queryset(self):
+		results = Post.objects.all()
+		for result in results:
+			result.title = markdown.markdown(result.title, extensions=[
+				'markdown.extensions.extra',
+				'markdown.extensions.codehilite',
+			])
+			result.content = markdown.markdown(result.content, extensions=[
+				'markdown.extensions.extra',
+				'markdown.extensions.codehilite',
+			])
+		return results
 
 
 class CategoryList(ListView):
@@ -85,6 +98,11 @@ class PostView(DetailView):
 			'markdown.extensions.extra',
 			'markdown.extensions.codehilite',
 			'markdown.extensions.toc',
+		])
+		# also markdown the title if needed
+		queryset.title = markdown.markdown(queryset.title, extensions=[
+			'markdown.extensions.extra',
+			'markdown.extensions.codehilite',
 		])
 		return queryset
 
