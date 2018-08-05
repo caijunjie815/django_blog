@@ -156,3 +156,26 @@ code {
         margin-top: 7rem;
     }
 }
+
+/* position link button */
+.blog-post-link {
+    position: relative;
+    text-align: center;
+}
+
+.blog-overview {
+    text-align: center;
+
+}
+
+.blog-previous {
+    float: left;
+}
+
+.blog-next {
+    float: right;
+}
+
+.btn {
+    border: 1px solid cadetblue;
+}

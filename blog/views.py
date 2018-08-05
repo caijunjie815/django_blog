@@ -160,6 +160,16 @@ class PostView(DetailView):
 		comment_form = CommentForm()
 		context['comment_form'] = comment_form
 
+		# get previous and next article id
+		current_id = self.kwargs['pk']
+		try:
+			context['previous_id'] = current_id - 1
+		except Exception:
+			context['previous_id'] = None
+		if current_id == Post.objects.latest('id').id:
+			context['next_id'] = None
+		else:
+			context['next_id'] = current_id + 1
 		return context
 
 
