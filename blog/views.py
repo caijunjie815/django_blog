@@ -162,10 +162,8 @@ class PostView(DetailView):
 
 		# get previous and next article id
 		current_id = self.kwargs['pk']
-		try:
-			context['previous_id'] = current_id - 1
-		except Exception:
-			context['previous_id'] = None
+		context['previous_id'] = current_id - 1
+
 		if current_id == Post.objects.latest('id').id:
 			context['next_id'] = None
 		else:

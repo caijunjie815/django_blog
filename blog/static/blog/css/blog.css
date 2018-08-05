@@ -179,3 +179,11 @@ code {
 .btn {
     border: 1px solid cadetblue;
 }
+
+/* style image */
+img {
+    width: 100%;
+    height: auto;
+    border: 1px solid cadetblue;
+    margin-bottom: 0.4rem;
+}
